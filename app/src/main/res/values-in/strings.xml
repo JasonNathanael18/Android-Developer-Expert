@@ -1,0 +1,150 @@
+<resources>
+    <string name="app_name">Submission2</string>
+
+    <string name="actionbar_title">Katalog Film / Tv</string>
+    <string name="actionbar_detail_title">Detil Acara</string>
+    <string name="user_score">Skor Pengguna</string>
+    <string name="overview">Ringkasan</string>
+    <string name="change_language_settings">Ganti Bahasa</string>
+
+    <!--    Tab-->
+    <string name="tab_title1">Film</string>
+    <string name="tab_title2">Acara Tv</string>
+
+    <!--    Movie Data-->
+    <string-array name="movie_title_list_data">
+        <item>Avengers: Infinity War</item>
+        <item>Solo: A Star Wars Story</item>
+        <item>Spider-Man: Into the Spider-Verse</item>
+        <item>Aquaman</item>
+        <item>T-34</item>
+        <item>Jurassic galaxy</item>
+        <item>Deadpool 2</item>
+        <item>Black Phanter</item>
+        <item>Venom</item>
+        <item>Green Book</item>
+    </string-array>
+
+    <string-array name="movie_date_list_data">
+        <item>April 25, 2018</item>
+        <item>Mei 15, 2018</item>
+        <item>Desember 6, 2018</item>
+        <item>Desember 7, 2018</item>
+        <item>Desember 27, 2018</item>
+        <item>Agustus 20, 2018</item>
+        <item>Mei 10, 2018</item>
+        <item>Februari 13, 2018</item>
+        <item>September 28, 2018</item>
+        <item>November 16, 2018</item>
+    </string-array>
+
+    <string-array name="movie_desc_list_data">
+        <item> Saat Avengers dan sekutu mereka terus melindungi dunia dari ancaman yang terlalu besar untuk ditangani oleh satu pahlawan, bahaya baru telah muncul dari bayang-bayang kosmik: Thanos. Seorang lalim penghinaan intergalaksi, tujuannya adalah untuk mengumpulkan semua enam Batu Infinity, artefak kekuatan tak terbayangkan, dan menggunakannya untuk menimbulkan keinginannya yang terpelintir pada semua kenyataan. Segala sesuatu yang Avengers telah perjuangkan telah mengarah ke saat ini - nasib Bumi dan keberadaannya tidak pernah lebih tidak pasti. </item>       
+        <item> Melalui serangkaian petualangan berani jauh di dalam dunia kriminal yang gelap dan berbahaya, Han Solo bertemu dengan kopilot Chewbacca masa depannya yang perkasa dan bertemu dengan penjudi terkenal Lando Calrissian. </item>        
+        <item> Miles Morales menyulap hidupnya antara menjadi siswa sekolah menengah dan menjadi manusia laba-laba. Saat Wilson Kingpin Fisk menggunakan collider super, yang lain dari seluruh Spider-Verse diangkut ke dimensi ini. </item>        
+        <item> Setelah menjadi rumah bagi peradaban paling maju di Bumi, Atlantis sekarang merupakan kerajaan bawah laut yang diperintah oleh Raja Orm yang haus kekuasaan. Dengan pasukan yang sangat besar, Orm berencana untuk menaklukkan orang-orang samudera yang tersisa dan kemudian ke permukaan. Yang menghalangi jalannya adalah Arthur Curry, lelaki setengah manusia Orms, setengah lelaki Atlantis dan pewaris sejati takhta. </item>        
+        <item> Pada tahun 1944, sekelompok tentara Rusia yang berani berhasil melarikan diri dari penawanan Jerman di tank T-34 legendaris yang setengah hancur. Itu adalah masa-masa keberanian yang tak terlupakan, pertarungan sengit, cinta yang tak terpatahkan, dan keajaiban legendaris.</item>
+        <item> Dalam waktu dekat, sebuah kapal penjelajah luar angkasa mendarat di planet yang tidak dikenal. Mereka segera bertemu dengan beberapa ketakutan terburuk mereka ketika mereka menemukan bahwa planet ini dihuni oleh dinosaurus raksasa. </item>        
+        <item> Deadpool tentara bayaran Wisecracking bertarung melawan Cable jahat dan kuat dan orang jahat lainnya untuk menyelamatkan kehidupan anak laki-laki. </item>     
+        <item> Raja TChalla pulang dari Amerika ke negara Wakanda yang tertutup dan berteknologi maju untuk melayani sebagai pemimpin baru negaranya. Namun, TChalla segera menemukan bahwa ia ditantang untuk naik takhta oleh faksi di negaranya sendiri maupun di luar. Menggunakan kekuatan yang diperuntukkan bagi raja-raja Wakandan, TChalla mengasumsikan mantel Black Panther untuk bergabung dengan pacar Nakia, ibu-ratu, saudara perempuan-putri, anggota Dora Milaje (pasukan khusus Wakandan) dan agen rahasia Amerika, untuk mencegah Wakanda dari terseret ke dalam perang dunia. </item>        
+        <item> Wartawan investigasi Eddie Brock mencoba kembali setelah skandal, tetapi secara tidak sengaja menjadi tuan rumah Venom, seorang simbiot alien yang sangat kuat dan sakti. Segera, ia harus mengandalkan kekuatan barunya untuk melindungi dunia dari organisasi bayangan yang mencari simbiosis mereka sendiri. </item>        
+        <item> Tony Lip, seorang penjaga di tahun 1962, disewa untuk mengusir pianis Don Shirley dalam tur melalui Deep South pada hari-hari ketika orang Afrika-Amerika, terpaksa menemukan akomodasi dan layanan alternatif karena undang-undang pemisahan di bawah Garis Mason-Dixon, mengandalkan panduan yang disebut Buku Hijau Negro Motorist. </item>
+    </string-array>
+
+    <string-array name="movie_rating_list_data">
+        <item>83%</item>
+        <item>66%</item>
+        <item>84%</item>
+        <item>68%</item>
+        <item>55%</item>
+        <item>35%</item>
+        <item>75%</item>
+        <item>74%</item>
+        <item>66%</item>
+        <item>83%</item>
+    </string-array>
+
+    <array name="movie_photo_list_data">
+        <item>@drawable/poster_avengerinfinity</item>
+        <item>@drawable/poster_star_wars</item>
+        <item>@drawable/poster_spiderman</item>
+        <item>@drawable/poster_aquaman</item>
+        <item>@drawable/poster_t34</item>
+        <item>@drawable/poster_jurassic_galaxy</item>
+        <item>@drawable/poster_deadpool_2</item>
+        <item>@drawable/poster_black_phanter</item>
+        <item>@drawable/poster_venom</item>
+        <item>@drawable/poster_green_book</item>
+    </array>
+
+    <!--    Tv Data-->
+    <string-array name="tv_title_list_data">
+        <item>Insatiable</item>
+        <item>Legacies</item>
+        <item>Chilling Adventures of Sabrina</item>
+        <item>Titans</item>
+        <item>Manifest</item>
+        <item>9-1-1</item>
+        <item>The Resident</item>
+        <item>Black Lightning</item>
+        <item>Unauthorized Living</item>
+        <item>YOU</item>
+    </string-array>
+
+    <string-array name="tv_date_list_data">
+        <item>Agustus 10, 2018</item>
+        <item>Oktober 25, 2018</item>
+        <item>Oktober 26, 2018</item>
+        <item>Oktober 12, 2018</item>
+        <item>September 24, 2018</item>
+        <item>Januari 3, 2018</item>
+        <item>Januari 21, 2018</item>
+        <item>Januari 16, 2018</item>
+        <item>September 24, 2018</item>
+        <item>September 9, 2018</item>
+    </string-array>
+
+    <string-array name="tv_desc_list_data">
+        <item> Seorang remaja yang diintimidasi beralih ke kontes kecantikan sebagai cara untuk membalas dendamnya, dengan bantuan pelatih yang dipermalukan yang segera menyadari bahwa dia berada di atas kepalanya. </item>       
+        <item>
+        Di tempat penyihir muda, vampir, dan manusia serigala diasuh untuk menjadi diri terbaik
+        mereka terlepas dari impuls terburuk mereka, putri Klaus Mikaelson, Hope Mikaelson, 17
+        tahun, kembar Alaric Saltzman, Lizzie dan Josie Saltzman, di antaranya yang lain, menjadi
+        pahlawan dan penjahat di The Salvatore School for the Young and Gifted.
+        </item>       
+        <item> Saat ulang tahunnya yang ke-16 semakin dekat, Sabrina harus memilih antara dunia penyihir keluarganya dan dunia manusia dari teman-temannya. Berdasarkan komik Archie. </item>      
+        <item> Tim pahlawan super muda yang dipimpin oleh Nightwing (sebelumnya Robin pertama Robin) terbentuk untuk memerangi kejahatan dan bahaya lainnya. </item>     
+        <item> Setelah mendarat dari penerbangan yang bergolak tetapi rutin, para kru dan penumpang Montego Air Penerbangan 828 menemukan lima tahun telah berlalu dalam waktu yang terasa seperti beberapa jam. Saat realitas baru mereka menjadi jelas, misteri yang lebih dalam terkuak dan beberapa penumpang yang kembali segera menyadari bahwa mereka mungkin dimaksudkan untuk sesuatu yang lebih besar daripada yang pernah mereka bayangkan mungkin terjadi. </item>      
+        <item> Jelajahi pengalaman tekanan tinggi dari petugas polisi, paramedis, dan petugas pemadam kebakaran yang didorong ke dalam situasi yang paling menakutkan, mengejutkan, dan mengejutkan. Para responden darurat ini harus berusaha menyeimbangkan menyelamatkan mereka yang paling rentan dengan penyelesaian masalah dalam kehidupan mereka sendiri. </item>      
+        <item> Seorang residen senior yang tangguh dan cerdas memandu seorang dokter muda yang idealis melewati hari pertamanya, menarik kembali tirai tentang apa yang sebenarnya terjadi, baik dan buruk, dalam kedokteran modern. </item>      
+        <item> Jefferson Pierce adalah seorang pria yang bergulat dengan sebuah rahasia. Sebagai ayah dari dua anak perempuan dan kepala sekolah sekolah menengah charter yang juga berfungsi sebagai tempat yang aman bagi kaum muda di lingkungan New Orleans yang dikuasai oleh kekerasan geng, ia adalah pahlawan bagi komunitasnya. </item>      
+        <item> Ketika pengirim Galicia dan raja obat bius yang menyembunyikan penyakit Alzheimernya berencana untuk pensiun, komplotannya yang kedua memerintahkan untuk mencuri kekaisaran dari ahli waris. </item>      
+        <item> Ketika seorang manajer toko buku yang brilian bertemu dengan seorang penulis yang bercita-cita tinggi, ia menggunakan internet dan media sosial untuk mengumpulkan detail paling intim dan mendekatinya. Naksir yang menawan dan canggung dengan cepat menjadi obsesi saat ia dengan tenang dan strategis menyingkirkan setiap rintangan - dan orang - di jalannya. </item>
+    </string-array>
+
+    <string-array name="tv_rating_list_data">
+        <item>76%</item>
+        <item>80%</item>
+        <item>78%</item>
+        <item>77%</item>
+        <item>75%</item>
+        <item>76%</item>
+        <item>80%</item>
+        <item>65%</item>
+        <item>79%</item>
+        <item>79%</item>
+    </string-array>
+
+    <array name="tv_photo_list_data">
+        <item>@drawable/insatiable</item>
+        <item>@drawable/legacies</item>
+        <item>@drawable/chilling</item>
+        <item>@drawable/titans</item>
+        <item>@drawable/manifest</item>
+        <item>@drawable/nine</item>
+        <item>@drawable/resident</item>
+        <item>@drawable/lightning</item>
+        <item>@drawable/living</item>
+        <item>@drawable/you</item>
+    </array>
+</resources>
