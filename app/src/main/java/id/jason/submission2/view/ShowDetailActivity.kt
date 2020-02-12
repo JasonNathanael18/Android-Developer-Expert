@@ -18,7 +18,7 @@ class ShowDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_detail)
-        supportActionBar!!.title = resources.getString(R.string.actionbar_detail_title)
+        supportActionBar?.title = resources.getString(R.string.actionbar_detail_title)
         showDetail = intent.getParcelableExtra(EXTRA_SHOWS) as Shows
         setData()
     }

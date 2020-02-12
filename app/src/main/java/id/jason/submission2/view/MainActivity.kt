@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setContentView(R.layout.activity_main)
-        supportActionBar!!.title = resources.getString(R.string.actionbar_title)
+        supportActionBar?.title = resources.getString(R.string.actionbar_title)
 
         val tabPagingAdapter = TabPagingAdapter(this,supportFragmentManager)
         vp_home.adapter = tabPagingAdapter
