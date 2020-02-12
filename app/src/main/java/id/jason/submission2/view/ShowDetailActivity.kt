@@ -19,8 +19,15 @@ class ShowDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_detail)
         supportActionBar?.title = resources.getString(R.string.actionbar_detail_title)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         showDetail = intent.getParcelableExtra(EXTRA_SHOWS) as Shows
         setData()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     private fun setData(){

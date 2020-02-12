@@ -6,6 +6,8 @@
     <string name="user_score">User Score</string>
     <string name="overview">Overview</string>
     <string name="change_language_settings">Change Language</string>
+    <string name="movie_detail_image">Movie Poster</string>
+    <string name="movie_item_image">Movie Poster Icon</string>
 
     <!--    Tab-->
     <string name="tab_title1">Movie</string>

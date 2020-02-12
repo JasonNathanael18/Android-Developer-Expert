@@ -27,6 +27,7 @@
             app:layout_constraintBottom_toBottomOf="@id/list_summary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/list_title"
+            android:contentDescription="@string/movie_item_image"
             tools:src="@tools:sample/avatars" />
 
         <TextView

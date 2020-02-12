@@ -40,15 +40,8 @@ class MovieViewHolderAdapter(private val listShows: ArrayList<Shows>) :
             list_summary.text = shows.showDesc
 
             itemView.setOnClickListener {
-                val movieSend = Shows(
-                    shows.showTitle,
-                    shows.showDate,
-                    shows.showDesc,
-                    shows.showRating,
-                    shows.showPhoto
-                )
                 val intentToDetail = Intent(itemView.context, ShowDetailActivity::class.java)
-                intentToDetail.putExtra(ShowDetailActivity.EXTRA_SHOWS, movieSend)
+                intentToDetail.putExtra(ShowDetailActivity.EXTRA_SHOWS, shows)
                 itemView.context.startActivity(intentToDetail)
             }
         }
