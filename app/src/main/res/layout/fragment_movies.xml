@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.MoviesFragment">
 
 <androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:listitem="@layout/item_list"
-    tools:orientation="vertical"/>
+    tools:orientation="vertical"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    android:visibility="gone"/>
 
+    <ProgressBar
+        android:id="@+id/pb_movie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
 </FrameLayout>

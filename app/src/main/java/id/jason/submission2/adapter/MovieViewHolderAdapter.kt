@@ -7,36 +7,46 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.jason.submission2.R
-import id.jason.submission2.model.Shows
+import id.jason.submission2.model.ShowsDetail
 import id.jason.submission2.view.ShowDetailActivity
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_list.*
 
-class MovieViewHolderAdapter(private val listShows: ArrayList<Shows>) :
+class MovieViewHolderAdapter :
     RecyclerView.Adapter<MovieViewHolderAdapter.MovieViewHolder>() {
+    private val mData = ArrayList<ShowsDetail>()
+    private val baseURL = "https://image.tmdb.org/t/p/w185"
+
+    fun setData(items: ArrayList<ShowsDetail>) {
+        mData.clear()
+        mData.addAll(items)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
         return MovieViewHolder(view)
     }
 
-    override fun getItemCount(): Int = listShows.size
+    override fun getItemCount(): Int = mData.size
 
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.setView(listShows[position])
+        holder.setView(mData[position])
     }
 
-    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), LayoutContainer {
+    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        LayoutContainer {
         override val containerView: View?
             get() = itemView
 
-        fun setView(shows: Shows) {
+        fun setView(shows: ShowsDetail) {
             Glide.with(itemView.context)
-                .load(shows.showPhoto)
+                .load(baseURL + shows.showPoster)
                 .into(list_image)
             list_title.text = shows.showTitle
-            list_date.text = shows.showDate
-            list_rating.text = shows.showRating
+            list_date.text = shows.showReleaseDate
+            list_rating.text = shows.showVote.toString()
             list_summary.text = shows.showDesc
 
             itemView.setOnClickListener {
