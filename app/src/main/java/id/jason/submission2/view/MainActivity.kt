@@ -15,11 +15,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        setContentView(R.layout.activity_main)
         supportActionBar?.title = resources.getString(R.string.actionbar_title)
 
-        val tabPagingAdapter = TabPagingAdapter(this,supportFragmentManager)
+        val tabPagingAdapter = TabPagingAdapter(this, supportFragmentManager)
         vp_home.adapter = tabPagingAdapter
         tab_home.setupWithViewPager(vp_home)
 

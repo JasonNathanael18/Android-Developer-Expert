@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class RetrofitService {
-    fun getInterceptor(): OkHttpClient {
+    private fun getInterceptor(): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
@@ -19,7 +19,7 @@ class RetrofitService {
             .build()
     }
 
-    fun getNetwork(): Retrofit {
+    private fun getNetwork(): Retrofit {
         return Retrofit.Builder().baseUrl(Constants.ApiEndPoint.BASE_URL)
             .client(getInterceptor())
             .addConverterFactory(GsonConverterFactory.create())

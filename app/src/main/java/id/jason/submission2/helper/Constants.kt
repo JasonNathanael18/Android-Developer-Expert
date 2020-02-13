@@ -9,6 +9,9 @@ class Constants {
         const val TV = "tv"
     }
     object API{
-        const val API_KEY = "1afdcc57d6cedfb7a99ba6bea5196a07"
+        const val API_KEY = BuildConfig.API_KEY
+    }
+    object State{
+        const val HOME_DETAIL_DATA ="home_detail_data"
     }
 }

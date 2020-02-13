@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import id.jason.submission2.R
+import id.jason.submission2.helper.Constants
 import id.jason.submission2.model.ShowsDetail
 import kotlinx.android.synthetic.main.activity_show_detail.*
 
@@ -23,7 +24,12 @@ class ShowDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         showDetail = intent.getParcelableExtra(EXTRA_SHOWS) as ShowsDetail
-        setData()
+        if (savedInstanceState == null) {
+            setData(showDetail)
+        } else {
+            showDetail = savedInstanceState.getParcelable<ShowsDetail>(Constants.State.HOME_DETAIL_DATA)!!
+            setData(showDetail)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -31,13 +37,18 @@ class ShowDetailActivity : AppCompatActivity() {
         return true
     }
 
-    private fun setData(){
-        detail_title.text = if (showDetail.showTitle.isNullOrEmpty()) showDetail.showName else showDetail.showTitle
-        detail_date.text = if (showDetail.showReleaseDate.isNullOrEmpty()) showDetail.showFirstAirDate else showDetail.showReleaseDate
-        detail_rating.text = showDetail.showVote.toString()
-        detail_desc.text = showDetail.showDesc ?: ""
+    private fun setData(data: ShowsDetail){
+        detail_title.text = if (data.showTitle.isEmpty()) data.showName else data.showTitle
+        detail_date.text = if (data.showReleaseDate.isEmpty()) data.showFirstAirDate else data.showReleaseDate
+        detail_rating.text = data.showVote.toString()
+        detail_desc.text = data.showDesc
         Glide.with(this)
-            .load(baseURL+showDetail.showPoster)
+            .load(baseURL+data.showPoster)
             .into(detail_image)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putParcelable(Constants.State.HOME_DETAIL_DATA,showDetail)
+        super.onSaveInstanceState(outState)
     }
 }
