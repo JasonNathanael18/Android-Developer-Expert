@@ -10,6 +10,10 @@
     <string name="movie_item_image">Ikon Poster Film</string>
     <string name="error_message">Terjadi kesalahan</string>
 
+    <string name="status">Status Aplikasi</string>
+    <string name="status_pre">Status : onPreExecute</string>
+    <string name="status_post">Status : onPostExecute</string>
+    <string name="desc">Description</string>
     <!--    Tab-->
     <string name="tab_title1">Film</string>
     <string name="tab_title2">Acara Tv</string>
