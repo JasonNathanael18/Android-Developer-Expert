@@ -8,6 +8,7 @@
     <string name="change_language_settings">Ganti Bahasa</string>
     <string name="movie_detail_image">Poster Film</string>
     <string name="movie_item_image">Ikon Poster Film</string>
+    <string name="error_message">Terjadi kesalahan</string>
 
     <!--    Tab-->
     <string name="tab_title1">Film</string>

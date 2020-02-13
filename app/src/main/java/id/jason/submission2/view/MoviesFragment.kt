@@ -41,7 +41,8 @@ class MoviesFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MovieViewModel::class.java)
         val language = if (Locale.getDefault().language == "in") "id" else Locale.getDefault().language
-        viewModel.setData(language)
+        val error = resources.getString(R.string.actionbar_title)
+        viewModel.setData(language,context,error)
         showLoading(true)
 
         viewModel.getData().observe(viewLifecycleOwner, Observer {

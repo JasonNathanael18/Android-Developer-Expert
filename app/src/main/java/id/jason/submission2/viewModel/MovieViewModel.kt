@@ -1,7 +1,10 @@
 package id.jason.submission2.viewModel
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import id.jason.submission2.R
 import id.jason.submission2.connection.RetrofitService
 import id.jason.submission2.helper.Constants.API.API_KEY
 import id.jason.submission2.model.ShowsResponse
@@ -12,11 +15,16 @@ import retrofit2.Response
 class MovieViewModel : ViewModel() {
     private var data = MutableLiveData<ShowsResponse>()
 
-    internal fun setData(language: String) {
+    internal fun setData(
+        language: String,
+        context: Context?,
+        errorMessage: String
+    ) {
         RetrofitService().api().movie(API_KEY, language)
             .enqueue(object : Callback<ShowsResponse> {
                 override fun onFailure(call: Call<ShowsResponse>, t: Throwable) {
                     data.postValue(null)
+                    Toast.makeText(context,errorMessage,Toast.LENGTH_LONG).show()
                 }
 
                 override fun onResponse(
