@@ -13,17 +13,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        android:configChanges="orientation">
-        <activity android:name=".view.ShowDetailActivity"></activity>
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.MainActivity">
+            android:name=".view.MainActivity"
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.ShowDetailActivity"
+            android:configChanges="orientation" />
     </application>
 
 </manifest>

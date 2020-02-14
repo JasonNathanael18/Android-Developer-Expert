@@ -23,11 +23,11 @@ class ShowDetailActivity : AppCompatActivity() {
         supportActionBar?.title = resources.getString(R.string.actionbar_detail_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        showDetail = intent.getParcelableExtra(EXTRA_SHOWS) as ShowsDetail
         if (savedInstanceState == null) {
+            showDetail = intent.getParcelableExtra(EXTRA_SHOWS) as ShowsDetail
             setData(showDetail)
         } else {
-            showDetail = savedInstanceState.getParcelable<ShowsDetail>(Constants.State.HOME_DETAIL_DATA)!!
+            showDetail = savedInstanceState.getParcelable(Constants.State.HOME_DETAIL_DATA)!!
             setData(showDetail)
         }
     }
