@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import id.jason.submission2.BuildConfig
 import id.jason.submission2.R
 import id.jason.submission2.model.ShowsDetail
 import id.jason.submission2.view.ShowDetailActivity
@@ -15,7 +16,6 @@ import kotlinx.android.synthetic.main.item_list.*
 class MovieViewHolderAdapter :
     RecyclerView.Adapter<MovieViewHolderAdapter.MovieViewHolder>() {
     private val mData = ArrayList<ShowsDetail>()
-    private val baseURL = "https://image.tmdb.org/t/p/w185"
 
     fun setData(items: ArrayList<ShowsDetail>) {
         mData.clear()
@@ -42,7 +42,7 @@ class MovieViewHolderAdapter :
 
         fun setView(shows: ShowsDetail) {
             Glide.with(itemView.context)
-                .load(baseURL + shows.showPoster)
+                .load(BuildConfig.BASE_URL + shows.showPoster)
                 .into(list_image)
             list_title.text = shows.showTitle
             list_date.text = shows.showReleaseDate

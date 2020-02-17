@@ -10,11 +10,11 @@ import id.jason.submission2.R
 import id.jason.submission2.model.ShowsDetail
 import id.jason.submission2.view.ShowDetailActivity
 import kotlinx.android.synthetic.main.item_list.view.*
+import id.jason.submission2.BuildConfig
 
 class TvViewHolderAdapter :
     RecyclerView.Adapter<TvViewHolderAdapter.TvViewHolder>() {
     private val mData = ArrayList<ShowsDetail>()
-    private val baseURL = "https://image.tmdb.org/t/p/w185"
 
     fun setData(items: ArrayList<ShowsDetail>) {
         mData.clear()
@@ -38,7 +38,7 @@ class TvViewHolderAdapter :
         fun setView(shows: ShowsDetail) {
             with(itemView) {
                 Glide.with(itemView.context)
-                    .load(baseURL + shows.showPoster)
+                    .load(BuildConfig.BASE_URL + shows.showPoster)
                     .into(list_image)
                 list_title.text = shows.showName
                 list_date.text = shows.showFirstAirDate

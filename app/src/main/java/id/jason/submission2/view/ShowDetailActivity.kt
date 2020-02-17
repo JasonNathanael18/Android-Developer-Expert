@@ -7,12 +7,12 @@ import id.jason.submission2.R
 import id.jason.submission2.helper.Constants
 import id.jason.submission2.model.ShowsDetail
 import kotlinx.android.synthetic.main.activity_show_detail.*
+import id.jason.submission2.BuildConfig
 
 class ShowDetailActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_SHOWS = "extra_show"
-        const val baseURL = "https://image.tmdb.org/t/p/w185"
     }
 
     private lateinit var showDetail: ShowsDetail
@@ -43,7 +43,7 @@ class ShowDetailActivity : AppCompatActivity() {
         detail_rating.text = data.showVote.toString()
         detail_desc.text = data.showDesc
         Glide.with(this)
-            .load(baseURL+data.showPoster)
+            .load(BuildConfig.BASE_URL+data.showPoster)
             .into(detail_image)
     }
 
