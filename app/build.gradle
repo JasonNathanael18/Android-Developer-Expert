@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 androidExtensions {
     experimental = true
@@ -17,8 +18,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField('String', 'BASE_URL', '"https://api.themoviedb.org/3/discover/"')
-        buildConfigField("String" , "API_KEY" , '"1afdcc57d6cedfb7a99ba6bea5196a07"')
-        buildConfigField("String" , "BASE_IMAGE_URL" , '"https://image.tmdb.org/t/p/w185"')
+        buildConfigField("String", "API_KEY", '"1afdcc57d6cedfb7a99ba6bea5196a07"')
+        buildConfigField("String", "BASE_IMAGE_URL", '"https://image.tmdb.org/t/p/w185"')
     }
     buildTypes {
         release {
@@ -26,11 +27,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
 }
 
 dependencies {
     def retrofit_version = '2.5.0'
     def gson_version = '2.8.5'
+
+    def roomVersion = '2.2.1'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -38,6 +44,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -56,4 +63,10 @@ dependencies {
 
     //debug network
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+
+    //room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$roomVersion"
 }

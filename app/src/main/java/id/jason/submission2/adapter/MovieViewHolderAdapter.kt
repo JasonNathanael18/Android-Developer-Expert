@@ -42,7 +42,7 @@ class MovieViewHolderAdapter :
 
         fun setView(shows: ShowsDetail) {
             Glide.with(itemView.context)
-                .load(BuildConfig.BASE_URL + shows.showPoster)
+                .load(BuildConfig.BASE_IMAGE_URL + shows.showPoster)
                 .into(list_image)
             list_title.text = shows.showTitle
             list_date.text = shows.showReleaseDate

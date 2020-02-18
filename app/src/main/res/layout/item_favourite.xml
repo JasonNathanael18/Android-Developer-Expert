@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="@dimen/padding_8dp"
+    android:layout_marginTop="@dimen/padding_4dp"
+    android:layout_marginRight="@dimen/padding_8dp"
+    android:layout_marginBottom="@dimen/padding_4dp"
+    app:cardCornerRadius="@dimen/padding_8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue"
+        android:paddingLeft="@dimen/padding_8dp"
+        android:paddingTop="@dimen/padding_16dp"
+        android:paddingRight="@dimen/padding_8dp"
+        android:paddingBottom="@dimen/padding_16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/list_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintBottom_toBottomOf="@id/list_summary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/list_title"
+            android:contentDescription="@string/movie_item_image"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/list_rating"
+            style="@style/ListTextStyle.Rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_8dp"
+            app:layout_constraintBottom_toBottomOf="@id/list_date"
+            app:layout_constraintStart_toEndOf="@+id/list_image"
+            app:layout_constraintTop_toTopOf="@id/list_title"
+            tools:text="88%" />
+
+        <TextView
+            android:id="@+id/list_title"
+            style="@style/ListTextStyle.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/list_rating"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/list_date"
+            style="@style/ListTextStyle.SubTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/list_title"
+            app:layout_constraintTop_toBottomOf="@+id/list_title"
+            tools:text="@tools:sample/date/mmddyy" />
+
+        <TextView
+            android:id="@+id/list_summary"
+            style="@style/ListTextStyle.Summary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_8dp"
+            app:layout_constraintLeft_toLeftOf="@id/list_rating"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/list_date"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/favourite_remove"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/list_summary"
+            app:layout_constraintStart_toStartOf="@id/list_summary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/padding_8dp"
+            android:background="@color/white"
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            android:layout_marginTop="@dimen/padding_16dp"
+            android:text="@string/remove_from_favourite"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

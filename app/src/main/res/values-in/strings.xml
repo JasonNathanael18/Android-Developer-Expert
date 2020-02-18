@@ -3,15 +3,21 @@
 
     <string name="actionbar_title">Katalog Film / Tv</string>
     <string name="actionbar_detail_title">Detil Acara</string>
+    <string name="actionbar_favourite_title">Favorit</string>
     <string name="user_score">Skor Pengguna</string>
     <string name="overview">Ringkasan</string>
     <string name="change_language_settings">Ganti Bahasa</string>
+    <string name="favourite_menu">Daftar Favorit</string>
     <string name="movie_detail_image">Poster Film</string>
     <string name="movie_item_image">Ikon Poster Film</string>
+    <string name="add_to_favorite">%s ditambahkan ke favorit</string>
 
     <!--    Tab-->
     <string name="tab_title1">Film</string>
     <string name="tab_title2">Acara Tv</string>
+    <string name="remove_from_favourite">Hapus dari favorit</string>
+    <string name="no_data_found">Tidak ada Data</string>
+    <string name="favourite_remove">Berhasil dihapus</string>
 
     <!--    Movie Data-->
 
