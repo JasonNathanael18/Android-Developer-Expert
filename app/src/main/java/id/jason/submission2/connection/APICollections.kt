@@ -20,4 +20,22 @@ interface APICollections {
     @GET(Constants.ApiEndPoint.TV)
     fun tv(@Query("api_key") apiKey: String,
              @Query("language") city: String): Call<ShowsResponse>
+
+    /**
+     * SEARCH MOVIE
+     */
+    @GET(Constants.ApiEndPoint.SEARCH_MOVIE)
+    fun searchMovie(
+        @Query("api_key") apiKey: String,
+        @Query("language") city: String,
+        @Query("query") query: String): Call<ShowsResponse>
+
+    /**
+     * SEARCH TV
+     */
+    @GET(Constants.ApiEndPoint.SEARCH_TV)
+    fun searchTv(
+        @Query("api_key") apiKey: String,
+        @Query("language") city: String,
+        @Query("query") query: String): Call<ShowsResponse>
 }

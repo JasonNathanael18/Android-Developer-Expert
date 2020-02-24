@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.FavouriteListActivity"></activity>
+
+        <activity android:name=".view.FavouriteListActivity" />
         <activity
             android:name=".view.MainActivity"
             android:configChanges="orientation">
@@ -27,6 +28,8 @@
         <activity
             android:name=".view.ShowDetailActivity"
             android:configChanges="orientation" />
+        <activity android:name=".view.ShowSearchActivity"
+            android:configChanges="orientation"/>
     </application>
 
 </manifest>

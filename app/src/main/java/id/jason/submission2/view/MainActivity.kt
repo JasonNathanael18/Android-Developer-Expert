@@ -6,11 +6,16 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.SearchView
+import com.google.android.material.tabs.TabLayout
 import id.jason.submission2.R
 import id.jason.submission2.adapter.TabPagingAdapter
+import id.jason.submission2.helper.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private var tabPosition:Int? = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +27,34 @@ class MainActivity : AppCompatActivity() {
         tab_home.setupWithViewPager(vp_home)
 
         supportActionBar?.elevation = 0f
+
+        tab_home.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+
+            override fun onTabSelected(tab: TabLayout.Tab?) { tabPosition=tab?.position }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
+
+        val searchItem = menu.findItem(R.id.app_bar_search)
+        val searchView = searchItem?.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                goToSearch(query)
+                searchView.clearFocus()
+                return true
+            }
+        })
+
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -40,4 +69,12 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    private fun goToSearch(query: String?) {
+        val intent = Intent(this, ShowSearchActivity::class.java)
+        intent.putExtra(Constants.IntentBundle.SEARCH_QUERY, query)
+        intent.putExtra(Constants.IntentBundle.SEARCH_CATEGORY,tabPosition)
+        startActivity(intent)
+    }
+
 }
