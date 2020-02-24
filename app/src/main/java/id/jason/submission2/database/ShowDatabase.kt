@@ -10,7 +10,7 @@ import id.jason.submission2.model.dao.ShowDao
 import kotlinx.coroutines.CoroutineScope
 
 @Database(entities = [ShowsDetail::class], version = 1, exportSchema = false)
-public abstract class ShowDatabase : RoomDatabase() {
+abstract class ShowDatabase : RoomDatabase() {
 
     abstract fun showDao(): ShowDao
 

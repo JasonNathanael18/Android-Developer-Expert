@@ -18,6 +18,7 @@
     <string name="remove_from_favourite">Hapus dari favorit</string>
     <string name="no_data_found">Tidak ada Data</string>
     <string name="favourite_remove">Berhasil dihapus</string>
+    <string name="favourite_button">Tombol Favorit</string>
 
     <!--    Movie Data-->
 

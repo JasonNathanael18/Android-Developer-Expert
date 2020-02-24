@@ -14,7 +14,7 @@ class FavouriteTabPagingAdapter(
 ) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     @StringRes
-    private val TAB_TITLES = intArrayOf(R.string.tab_title1, R.string.tab_title2)
+    private val tabTitles = intArrayOf(R.string.tab_title1, R.string.tab_title2)
 
     override fun getItem(position: Int): Fragment {
        return FavouriteFragment.newInstance(position+1)
@@ -25,6 +25,6 @@ class FavouriteTabPagingAdapter(
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return mContext.resources.getString(TAB_TITLES[position])
+        return mContext.resources.getString(tabTitles[position])
     }
 }
