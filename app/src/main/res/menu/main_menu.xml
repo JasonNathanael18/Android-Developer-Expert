@@ -18,4 +18,11 @@
         app:showAsAction="ifRoom"
         app:actionViewClass="android.widget.SearchView"
         app:iconifiedByDefault="true"/>
+
+    <item
+        android:id="@+id/go_to_setting"
+        android:title="@string/setting_menu"
+        app:showAsAction="never"/>
+
+
 </menu>

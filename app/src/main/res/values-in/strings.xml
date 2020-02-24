@@ -4,6 +4,7 @@
     <string name="actionbar_title">Katalog Film / Tv</string>
     <string name="actionbar_detail_title">Detil Acara</string>
     <string name="actionbar_favourite_title">Favorit</string>
+    <string name="actionbar_setting_title">Pengaturan</string>
     <string name="user_score">Skor Pengguna</string>
     <string name="overview">Ringkasan</string>
     <string name="change_language_settings">Ganti Bahasa</string>
@@ -20,6 +21,11 @@
     <string name="favourite_remove">Berhasil dihapus</string>
     <string name="favourite_button">Tombol Favorit</string>
     <string name="search">Cari</string>
+    <string name="release_reminder">Pengingat Rilis</string>
+    <string name="key_release">release</string>
+    <string name="daily_reminder">Pengingat Harian</string>
+    <string name="key_daily">daily</string>
+    <string name="setting_menu">Pengaturan</string>
 
     <!--    Movie Data-->
 

@@ -4,6 +4,7 @@
     <string name="actionbar_title">Movie/Tv Catalogue</string>
     <string name="actionbar_detail_title">Show Detail</string>
     <string name="actionbar_favourite_title">Favourite</string>
+    <string name="actionbar_setting_title">Setting</string>
     <string name="user_score">User Score</string>
     <string name="overview">Overview</string>
     <string name="change_language_settings">Change Language</string>
@@ -20,6 +21,11 @@
     <string name="favourite_remove">Removed Success</string>
     <string name="favourite_button">Favourite Button</string>
     <string name="search">Search</string>
+    <string name="release_reminder">Release Reminder</string>
+    <string name="key_release">release</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="key_daily">daily</string>
+    <string name="setting_menu">Setting</string>
 
     <!--    Movie Data-->
 

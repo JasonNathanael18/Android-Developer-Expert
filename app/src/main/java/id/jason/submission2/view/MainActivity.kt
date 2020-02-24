@@ -67,6 +67,10 @@ class MainActivity : AppCompatActivity() {
             val mIntent = Intent(this,FavouriteListActivity::class.java)
             startActivity(mIntent)
         }
+        else if (item.itemId == R.id.go_to_setting) {
+            val mIntent = Intent(this,SettingActivity::class.java)
+            startActivity(mIntent)
+        }
         return super.onOptionsItemSelected(item)
     }
 
