@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blue"
+    android:paddingLeft="@dimen/padding_8dp"
+    android:paddingTop="@dimen/padding_16dp"
+    android:paddingRight="@dimen/padding_8dp"
+    android:paddingBottom="@dimen/padding_16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/list_rating"
+        style="@style/ListTextStyle.Rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_8dp"
+        tools:text="88%" />
+
+    <TextView
+        android:id="@+id/list_title"
+        style="@style/ListTextStyle.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_8dp"
+        tools:text="@tools:sample/full_names" />
+
+    <TextView
+        android:id="@+id/list_date"
+        style="@style/ListTextStyle.SubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_8dp"
+        tools:text="@tools:sample/date/mmddyy" />
+
+    <TextView
+        android:id="@+id/list_summary"
+        style="@style/ListTextStyle.Summary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_8dp"
+        app:layout_constraintLeft_toLeftOf="@id/list_rating"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/list_date"
+        android:layout_marginStart="@dimen/padding_8dp"
+        tools:text="@tools:sample/lorem/random" />
+
+</LinearLayout>
