@@ -1,16 +1,20 @@
 package id.jason.submission2.view
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import id.jason.submission2.BuildConfig
 import id.jason.submission2.R
 import id.jason.submission2.helper.Constants
 import id.jason.submission2.model.ShowsDetail
-import kotlinx.android.synthetic.main.activity_show_detail.*
-import id.jason.submission2.BuildConfig
 import id.jason.submission2.viewModel.FavouriteViewModel
+import id.jason.submission2.widget.FavouriteAppWidget
+import kotlinx.android.synthetic.main.activity_show_detail.*
 
 class ShowDetailActivity : AppCompatActivity() {
 
@@ -64,6 +68,15 @@ class ShowDetailActivity : AppCompatActivity() {
             val titleOrName = if (showDetail.showTitle.isNullOrEmpty()) showDetail.showName else showDetail.showTitle
             Toast.makeText(this, getString(R.string.add_to_favorite, titleOrName), Toast.LENGTH_LONG).show()
             viewModel?.insert(showDetail)
+
+            val intent = Intent(this, FavouriteAppWidget::class.java)
+            intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+
+            val ids: IntArray = AppWidgetManager.getInstance(application).getAppWidgetIds(
+                ComponentName(application, FavouriteAppWidget::class.java)
+            )
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            sendBroadcast(intent)
         }
     }
 }

@@ -1,5 +1,7 @@
 package id.jason.submission2.adapter
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -14,6 +16,7 @@ import id.jason.submission2.BuildConfig
 import id.jason.submission2.view.IFavouriteListener
 import kotlinx.android.synthetic.main.item_favourite.view.*
 import id.jason.submission2.view.ShowDetailActivity
+import id.jason.submission2.widget.FavouriteAppWidget
 
 class FavouriteViewHolderAdapter(
     private var mContext: Context,
@@ -50,6 +53,15 @@ class FavouriteViewHolderAdapter(
                 favourite_remove.setOnClickListener {
                     favoriteListener.onFavoriteDeleteClick(shows.id!!)
                     Toast.makeText(mContext, context.getString(R.string.favourite_remove),Toast.LENGTH_LONG).show()
+
+                    val intent = Intent(context, FavouriteAppWidget::class.java)
+                    intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+
+                    val ids: IntArray = AppWidgetManager.getInstance(context).getAppWidgetIds(
+                        ComponentName(context, FavouriteAppWidget::class.java)
+                    )
+                    intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+                    context.sendBroadcast(intent)
                 }
                 itemView.setOnClickListener {
                     val intentToDetail = Intent(itemView.context, ShowDetailActivity::class.java)

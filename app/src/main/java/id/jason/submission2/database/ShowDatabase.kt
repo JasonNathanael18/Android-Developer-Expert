@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import id.jason.submission2.model.ShowsDetail
+import id.jason.submission2.model.dao.FavouriteDao
 import id.jason.submission2.model.dao.ShowDao
 import kotlinx.coroutines.CoroutineScope
 
@@ -13,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 abstract class ShowDatabase : RoomDatabase() {
 
     abstract fun showDao(): ShowDao
+    abstract fun showFavourite(): FavouriteDao
 
     companion object {
         @Volatile

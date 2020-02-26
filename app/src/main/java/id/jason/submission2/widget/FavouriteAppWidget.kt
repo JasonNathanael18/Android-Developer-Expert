@@ -2,7 +2,10 @@ package id.jason.submission2.widget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
+import android.appwidget.AppWidgetManager.ACTION_APPWIDGET_UPDATE
+import android.appwidget.AppWidgetManager.getInstance
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
@@ -60,12 +63,20 @@ class FavouriteAppWidget : AppWidgetProvider() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        super.onReceive(context, intent)
         if (intent.action != null) {
             if (intent.action == TOAST_ACTION) {
                 val viewIndex = intent.getIntExtra(EXTRA_ITEM, 0)
                 Toast.makeText(context, "Touched view $viewIndex", Toast.LENGTH_SHORT).show()
             }
+            else if(intent.action == ACTION_APPWIDGET_UPDATE){
+                //onUpdate(context,intent.get,intent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS))
+                println("tes")
+                val appWidgetManager: AppWidgetManager = getInstance(context)
+                val thisWidget: ComponentName = ComponentName(context,FavouriteAppWidget::class.java)
+                val appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget)
+                appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds,R.id.stack_view)
+            }
         }
+        super.onReceive(context, intent)
     }
 }
