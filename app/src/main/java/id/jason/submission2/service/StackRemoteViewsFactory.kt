@@ -20,7 +20,6 @@ import id.jason.submission2.widget.FavouriteAppWidget
 
 class StackRemoteViewsFactory(private val mContext: Context) :
     RemoteViewsService.RemoteViewsFactory, AndroidViewModel(mContext as Application) {
-    private val mWidgetItems: List<ShowsDetail> = arrayListOf()
     private var tempList: List<ShowsDetail> = arrayListOf()
     private var favouriteRepository: FavouriteRepository? = null
     private var favouriteDao: FavouriteDao? = null

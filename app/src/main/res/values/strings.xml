@@ -29,6 +29,7 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="empty_text">No Data Found</string>
+    <string name="notif_release_alarm">Jangan lupa buka aplikasi movie hari ini</string>
 
     <!--    Movie Data-->
 

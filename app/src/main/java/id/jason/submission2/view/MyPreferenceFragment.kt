@@ -1,24 +1,30 @@
 package id.jason.submission2.view
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Toast
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import id.jason.submission2.R
+import id.jason.submission2.R.string
+import id.jason.submission2.service.AlarmReceiver
 
 class MyPreferenceFragment: PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var RELEASE: String
     private lateinit var DAILY: String
-
+    private lateinit var mcontext: Context
     private lateinit var releasePreference: SwitchPreference
     private lateinit var dailyPreference: SwitchPreference
+    private lateinit var alarmReceiver: AlarmReceiver
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences)
         init()
         setSummaries()
+        alarmReceiver = AlarmReceiver()
     }
 
     private fun setSummaries() {
@@ -44,12 +50,27 @@ class MyPreferenceFragment: PreferenceFragmentCompat(),
         preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mcontext = context
+    }
+
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         if (key == RELEASE) {
             releasePreference.isChecked = sharedPreferences.getBoolean(RELEASE, false)
+            if (releasePreference.isChecked){
+                alarmReceiver.setRepeatingAlarm(mcontext,"07:00" , AlarmReceiver.TYPE_RELEASE, getString(string.notif_release_alarm))
+            }else{
+                println("Setting Release uncheked")
+            }
         }
         if (key == DAILY) {
             dailyPreference.isChecked = sharedPreferences.getBoolean(DAILY, false)
+            if (dailyPreference.isChecked){
+                println("Setting Daily cheked")
+            }else{
+                println("Setting Daily uncheked")
+            }
         }
     }
 }

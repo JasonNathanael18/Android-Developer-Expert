@@ -11,6 +11,7 @@ import com.google.android.material.tabs.TabLayout
 import id.jason.submission2.R
 import id.jason.submission2.adapter.TabPagingAdapter
 import id.jason.submission2.helper.Constants
+import id.jason.submission2.service.AlarmReceiver
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
