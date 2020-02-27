@@ -46,25 +46,25 @@ class StackRemoteViewsFactory(private val mContext: Context) :
 
     override fun getViewAt(pos: Int): RemoteViews {
         val rv = RemoteViews(mContext.packageName, R.layout.widget_item)
-        rv.setTextViewText(
-            R.id.list_title,
-            if (tempList[pos].showTitle.isNullOrEmpty()) tempList[pos].showName else tempList[pos].showTitle
-        )
-        rv.setTextViewText(R.id.list_rating, tempList[pos].showVote.toString())
-        rv.setTextViewText(
-            R.id.list_date,
-            if (tempList[pos].showReleaseDate.isNullOrEmpty()) tempList[pos].showFirstAirDate else tempList[pos].showReleaseDate
-        )
-//        rv.setTextViewText(
-//            R.id.list_summary,
-//            tempList[pos].showDesc)
+        if(!tempList.isNullOrEmpty()){
+            rv.setTextViewText(
+                R.id.list_title,
+                if (tempList[pos].showTitle.isNullOrEmpty()) tempList[pos].showName else tempList[pos].showTitle
+            )
+            rv.setTextViewText(R.id.list_rating, tempList[pos].showVote.toString())
+            rv.setTextViewText(
+                R.id.list_date,
+                if (tempList[pos].showReleaseDate.isNullOrEmpty()) tempList[pos].showFirstAirDate else tempList[pos].showReleaseDate
+            )
 
-        val extras = bundleOf(
-            FavouriteAppWidget.EXTRA_ITEM to pos
-        )
-        val fillInIntent = Intent()
-        fillInIntent.putExtras(extras)
-        rv.setOnClickFillInIntent(R.id.list_title, fillInIntent)
+            val extras = bundleOf(
+                FavouriteAppWidget.EXTRA_ITEM to pos
+            )
+
+            val fillInIntent = Intent()
+            fillInIntent.putExtras(extras)
+            rv.setOnClickFillInIntent(R.id.list_title, fillInIntent)
+        }
         return rv
     }
 
