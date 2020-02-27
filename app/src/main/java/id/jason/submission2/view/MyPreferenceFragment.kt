@@ -61,15 +61,15 @@ class MyPreferenceFragment: PreferenceFragmentCompat(),
             if (releasePreference.isChecked){
                 alarmReceiver.setRepeatingAlarm(mcontext,"07:00" , AlarmReceiver.TYPE_RELEASE, getString(string.notif_release_alarm))
             }else{
-                println("Setting Release uncheked")
+                alarmReceiver.cancelAlarm(mcontext, AlarmReceiver.TYPE_RELEASE)
             }
         }
         if (key == DAILY) {
             dailyPreference.isChecked = sharedPreferences.getBoolean(DAILY, false)
             if (dailyPreference.isChecked){
-                println("Setting Daily cheked")
+                alarmReceiver.setRepeatingAlarm(mcontext,"08:00" , AlarmReceiver.TYPE_NEW, "")
             }else{
-                println("Setting Daily uncheked")
+                alarmReceiver.cancelAlarm(mcontext, AlarmReceiver.TYPE_NEW)
             }
         }
     }

@@ -13,9 +13,22 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import id.jason.submission2.R
+import id.jason.submission2.connection.RetrofitService
+import id.jason.submission2.helper.Constants.API.API_KEY
+import id.jason.submission2.model.ShowsDetail
+import id.jason.submission2.model.ShowsResponse
 import java.util.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.text.SimpleDateFormat
 
 class AlarmReceiver : BroadcastReceiver() {
+
+    private var listResponse: List<ShowsDetail>? = listOf()
+    private var title=""
+    private var notifId=0
+    private var message=""
 
     companion object {
         const val TYPE_RELEASE = "ReleaseAlarm"
@@ -30,15 +43,22 @@ class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
         val type = intent.getStringExtra(EXTRA_TYPE)
-        val message = intent.getStringExtra(EXTRA_MESSAGE)
-
-        val title =   if (type.equals(TYPE_RELEASE, ignoreCase = true)) TYPE_RELEASE else TYPE_NEW
-        val notifId = if (type.equals(TYPE_RELEASE, ignoreCase = true)) ID_RELEASE else ID_NEW
-
-        //Jika Anda ingin menampilkan dengan toast anda bisa menghilangkan komentar pada baris dibawah ini.
-//        showToast(context, title, message)
-
-        showAlarmNotification(context, title, message, notifId)
+        var title=""
+        var notifId=0
+        var message=""
+        if (type == TYPE_RELEASE) {
+            message = intent.getStringExtra(EXTRA_MESSAGE)
+            title = TYPE_RELEASE
+            notifId = ID_RELEASE
+            showAlarmNotification(context, title, message, notifId)
+        }
+        else if(type == TYPE_NEW){
+            val cDate = Date()
+            val stringDate = SimpleDateFormat("yyyy-MM-dd").format(cDate)
+            title = TYPE_NEW
+            notifId = ID_NEW
+            getData(stringDate, stringDate, title, notifId, context)
+        }
     }
 
     fun cancelAlarm(context: Context, type: String) {
@@ -51,7 +71,7 @@ class AlarmReceiver : BroadcastReceiver() {
         Toast.makeText(context, "Repeating alarm dibatalkan", Toast.LENGTH_SHORT).show()
     }
 
-    fun setRepeatingAlarm(context: Context,time: String, type: String, message: String) {
+    fun setRepeatingAlarm(context: Context, time: String, type: String, message: String) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
         intent.putExtra(EXTRA_MESSAGE, message)
@@ -61,17 +81,33 @@ class AlarmReceiver : BroadcastReceiver() {
         calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]))
         calendar.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]))
         calendar.set(Calendar.SECOND, 0)
-        val pendingIntent = PendingIntent.getBroadcast(context, ID_REPEATING, intent, 0)
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            if (type.equals(TYPE_RELEASE, ignoreCase = true)) ID_RELEASE else ID_NEW,
+            intent,
+            0
+        )
+        alarmManager.setInexactRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
+        )
         Toast.makeText(context, "Repeating alarm set up", Toast.LENGTH_SHORT).show()
     }
 
-    private fun showAlarmNotification(context: Context, title: String, message: String, notifId: Int) {
+    private fun showAlarmNotification(
+        context: Context,
+        title: String,
+        message: String,
+        notifId: Int
+    ) {
 
         val CHANNEL_ID = "Channel_1"
         val CHANNEL_NAME = "AlarmManager channel"
 
-        val notificationManagerCompat = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManagerCompat =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_favorite_red_48dp)
@@ -88,9 +124,11 @@ class AlarmReceiver : BroadcastReceiver() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             /* Create or update. */
-            val channel = NotificationChannel(CHANNEL_ID,
+            val channel = NotificationChannel(
+                CHANNEL_ID,
                 CHANNEL_NAME,
-                NotificationManager.IMPORTANCE_DEFAULT)
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
 
             channel.enableVibration(true)
             channel.vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
@@ -104,5 +142,32 @@ class AlarmReceiver : BroadcastReceiver() {
 
         notificationManagerCompat.notify(notifId, notification)
 
+    }
+
+    private fun getData(
+        gteDate: String,
+        lteDate: String,
+        title: String,
+        notifId: Int,
+        context: Context
+    ){
+        RetrofitService().api().newRelease(API_KEY, gteDate, lteDate)
+            .enqueue(object : Callback<ShowsResponse> {
+                override fun onFailure(call: Call<ShowsResponse>, t: Throwable) {
+                }
+
+                override fun onResponse(
+                    call: Call<ShowsResponse>,
+                    response: Response<ShowsResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        listResponse = response.body()!!.results
+                        var hasil=""
+                        for (i in 0 until listResponse?.size!!-1)
+                        hasil += (listResponse!![i].showTitle + " ")
+                        showAlarmNotification(context, title, hasil, notifId)
+                    }
+                }
+            })
     }
 }

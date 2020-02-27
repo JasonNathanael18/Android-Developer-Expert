@@ -9,6 +9,7 @@ class Constants {
         const val TV = "discover/tv"
         const val SEARCH_MOVIE = "search/movie"
         const val SEARCH_TV =  "search/tv"
+        const val NEW_RELEASE =  "discover/movie"
     }
     object API{
         const val API_KEY = BuildConfig.API_KEY

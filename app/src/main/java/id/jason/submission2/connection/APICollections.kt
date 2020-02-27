@@ -38,4 +38,13 @@ interface APICollections {
         @Query("api_key") apiKey: String,
         @Query("language") city: String,
         @Query("query") query: String): Call<ShowsResponse>
+
+    /**
+     *
+     */
+    @GET(Constants.ApiEndPoint.NEW_RELEASE)
+    fun newRelease(
+        @Query("api_key") apiKey: String,
+        @Query("primary_release_date.gte") gteDate: String,
+        @Query("primary_release_date.lte") lteDate: String): Call<ShowsResponse>
 }
