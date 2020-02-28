@@ -58,7 +58,7 @@ class MyPreferenceFragment: PreferenceFragmentCompat(),
         if (key == RELEASE) {
             releasePreference.isChecked = sharedPreferences.getBoolean(RELEASE, false)
             if (releasePreference.isChecked){
-                alarmReceiver.setRepeatingAlarm(mcontext,"14:44" , AlarmReceiver.TYPE_RELEASE, "")
+                alarmReceiver.setRepeatingAlarm(mcontext,"08:00" , AlarmReceiver.TYPE_RELEASE, "")
             }else{
                 alarmReceiver.cancelAlarm(mcontext, AlarmReceiver.TYPE_RELEASE)
             }
