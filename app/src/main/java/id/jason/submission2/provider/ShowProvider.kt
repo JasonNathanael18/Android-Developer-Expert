@@ -12,19 +12,19 @@ import id.jason.submission2.database.ShowDatabase
 class ShowProvider : ContentProvider() {
 
     companion object {
-        private const val NOTE = 1
-        private const val NOTE_ID = 2
+        private const val SHOW = 1
+        private const val SHOW_ID = 2
         private val sUriMatcher = UriMatcher(UriMatcher.NO_MATCH)
         private lateinit var showDatabase: ShowDatabase
 
         init {
             // content://com.dicoding.picodiploma.mynotesapp/note
-            sUriMatcher.addURI(AUTHORITY, TABLE_NAME, NOTE)
+            sUriMatcher.addURI(AUTHORITY, TABLE_NAME, SHOW)
             // content://com.dicoding.picodiploma.mynotesapp/note/id
             sUriMatcher.addURI(
                 AUTHORITY,
                 "$TABLE_NAME/#",
-                NOTE_ID
+                SHOW_ID
             )
         }
     }
@@ -41,7 +41,17 @@ class ShowProvider : ContentProvider() {
         selectionArgs: Array<String>?,
         sortOrder: String?
     ): Cursor? {
-        return null
+        val cursor: Cursor?
+        when (sUriMatcher.match(uri)) {
+            SHOW -> {
+                cursor = showDatabase.showFavourite().getFavouriteMovie()
+                cursor.setNotificationUri(context?.contentResolver, uri)
+            }
+            SHOW_ID -> cursor =
+                showDatabase.showFavourite().queryById(uri.lastPathSegment.toString().toInt())
+            else -> cursor = null
+        }
+        return cursor
     }
 
     override fun getType(uri: Uri): String? {
