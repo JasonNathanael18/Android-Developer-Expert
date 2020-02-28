@@ -1,6 +1,5 @@
 package id.jason.submission2.model.repository
 
-import androidx.lifecycle.LiveData
 import id.jason.submission2.model.ShowsDetail
 import id.jason.submission2.model.dao.FavouriteDao
 

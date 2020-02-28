@@ -16,10 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
         <receiver
             android:name=".service.AlarmReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
         <receiver android:name=".widget.FavouriteAppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -29,6 +30,12 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/favourite_app_widget_info" />
         </receiver>
+
+        <provider
+            android:name=".provider.ShowProvider"
+            android:authorities="id.jason.submission2"
+            android:enabled="true"
+            android:exported="true"/>
 
         <activity android:name=".view.SettingActivity" />
         <activity android:name=".view.FavouriteListActivity" />
