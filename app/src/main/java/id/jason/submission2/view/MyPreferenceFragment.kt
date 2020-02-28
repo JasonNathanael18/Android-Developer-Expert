@@ -3,7 +3,6 @@ package id.jason.submission2.view
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Toast
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import id.jason.submission2.R
@@ -59,7 +58,7 @@ class MyPreferenceFragment: PreferenceFragmentCompat(),
         if (key == RELEASE) {
             releasePreference.isChecked = sharedPreferences.getBoolean(RELEASE, false)
             if (releasePreference.isChecked){
-                alarmReceiver.setRepeatingAlarm(mcontext,"07:00" , AlarmReceiver.TYPE_RELEASE, getString(string.notif_release_alarm))
+                alarmReceiver.setRepeatingAlarm(mcontext,"14:44" , AlarmReceiver.TYPE_RELEASE, "")
             }else{
                 alarmReceiver.cancelAlarm(mcontext, AlarmReceiver.TYPE_RELEASE)
             }
@@ -67,9 +66,9 @@ class MyPreferenceFragment: PreferenceFragmentCompat(),
         if (key == DAILY) {
             dailyPreference.isChecked = sharedPreferences.getBoolean(DAILY, false)
             if (dailyPreference.isChecked){
-                alarmReceiver.setRepeatingAlarm(mcontext,"08:00" , AlarmReceiver.TYPE_NEW, "")
+                alarmReceiver.setRepeatingAlarm(mcontext,"07:00" , AlarmReceiver.TYPE_DAILY, getString(string.notif_release_alarm))
             }else{
-                alarmReceiver.cancelAlarm(mcontext, AlarmReceiver.TYPE_NEW)
+                alarmReceiver.cancelAlarm(mcontext, AlarmReceiver.TYPE_DAILY)
             }
         }
     }

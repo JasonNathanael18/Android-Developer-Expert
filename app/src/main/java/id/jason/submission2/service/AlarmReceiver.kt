@@ -26,18 +26,15 @@ import java.text.SimpleDateFormat
 class AlarmReceiver : BroadcastReceiver() {
 
     private var listResponse: List<ShowsDetail>? = listOf()
-    private var title=""
-    private var notifId=0
-    private var message=""
 
     companion object {
         const val TYPE_RELEASE = "ReleaseAlarm"
-        const val TYPE_NEW = "NewAlarm"
+        const val TYPE_DAILY = "DailyAlarm"
         const val EXTRA_MESSAGE = "message"
         const val EXTRA_TYPE = "type"
         // Siapkan 2 id untuk 2 macam alarm, onetime dan repeating
         private const val ID_RELEASE = 101
-        private const val ID_NEW = 102
+        private const val ID_DAILY = 102
     }
 
     override fun onReceive(context: Context, intent: Intent) {
@@ -46,17 +43,17 @@ class AlarmReceiver : BroadcastReceiver() {
         var title=""
         var notifId=0
         var message=""
-        if (type == TYPE_RELEASE) {
+        if (type == TYPE_DAILY) {
             message = intent.getStringExtra(EXTRA_MESSAGE)
-            title = TYPE_RELEASE
-            notifId = ID_RELEASE
+            title = TYPE_DAILY
+            notifId = ID_DAILY
             showAlarmNotification(context, title, message, notifId)
         }
-        else if(type == TYPE_NEW){
+        else if(type == TYPE_RELEASE){
             val cDate = Date()
             val stringDate = SimpleDateFormat("yyyy-MM-dd").format(cDate)
-            title = TYPE_NEW
-            notifId = ID_NEW
+            title = TYPE_RELEASE
+            notifId = ID_RELEASE
             getData(stringDate, stringDate, title, notifId, context)
         }
     }
@@ -64,7 +61,7 @@ class AlarmReceiver : BroadcastReceiver() {
     fun cancelAlarm(context: Context, type: String) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
-        val requestCode = if (type.equals(TYPE_RELEASE, ignoreCase = true)) ID_RELEASE else ID_NEW
+        val requestCode = if (type.equals(TYPE_RELEASE, ignoreCase = true)) ID_RELEASE else ID_DAILY
         val pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, 0)
         pendingIntent.cancel()
         alarmManager.cancel(pendingIntent)
@@ -83,7 +80,7 @@ class AlarmReceiver : BroadcastReceiver() {
         calendar.set(Calendar.SECOND, 0)
         val pendingIntent = PendingIntent.getBroadcast(
             context,
-            if (type.equals(TYPE_RELEASE, ignoreCase = true)) ID_RELEASE else ID_NEW,
+            if (type.equals(TYPE_RELEASE, ignoreCase = true)) ID_RELEASE else ID_DAILY,
             intent,
             0
         )
@@ -163,9 +160,10 @@ class AlarmReceiver : BroadcastReceiver() {
                     if (response.isSuccessful) {
                         listResponse = response.body()!!.results
                         var hasil=""
-                        for (i in 0 until listResponse?.size!!-1)
-                        hasil += (listResponse!![i].showTitle + " ")
-                        showAlarmNotification(context, title, hasil, notifId)
+                        for (i in 0 until listResponse?.size!!-1){
+                            hasil = (listResponse!![i].showTitle.toString())
+                            showAlarmNotification(context, title, hasil+ context.getString(R.string.released_today), notifId)
+                        }
                     }
                 }
             })

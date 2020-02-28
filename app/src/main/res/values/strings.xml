@@ -28,6 +28,7 @@
     <string name="setting_menu">Setting</string>
     <string name="empty_text">No Data Found</string>
     <string name="notif_release_alarm">Dont forget to open movie app today</string>
+    <string name="released_today">released today!</string>
 
     <!--    Movie Data-->
 
