@@ -7,6 +7,7 @@ import android.database.Cursor
 import android.net.Uri
 import id.jason.submission2.database.DatabaseContract.AUTHORITY
 import id.jason.submission2.database.DatabaseContract.NoteColumns.Companion.TABLE_NAME
+import id.jason.submission2.database.DatabaseContract.SCHEME
 import id.jason.submission2.database.ShowDatabase
 
 class ShowProvider : ContentProvider() {
@@ -16,6 +17,7 @@ class ShowProvider : ContentProvider() {
         private const val SHOW_ID = 2
         private val sUriMatcher = UriMatcher(UriMatcher.NO_MATCH)
         private lateinit var showDatabase: ShowDatabase
+        var URI_MOVIE = Uri.parse("$SCHEME://$AUTHORITY/$TABLE_NAME")
 
         init {
             // content://com.dicoding.picodiploma.mynotesapp/note
